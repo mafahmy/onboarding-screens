@@ -48,7 +48,7 @@ const OnboardingScreens = () => {
           onTouchMove={handleTouchMove}
         >
           <div
-            className='sm:h-5/6 rounded-2xl h-5/6'
+            className='rounded-2xl'
             style={onboardingScreens[index].backgroundStyle}
           >
             <div
