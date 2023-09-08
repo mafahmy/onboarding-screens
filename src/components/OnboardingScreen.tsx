@@ -21,10 +21,13 @@ const OnboardingScreen = ({
   return (
     <>
       <div className='flex flex-col justify-evenly items-center min-w-full min-h-full '>
-        <img className='' src={image} alt={title} />
-        <section className='p-4 flex flex-col justify-evenly items-center h-3/4'>
-          <h1 className='text-3xl'>{title}</h1>
-          <p>{description}</p>
+        <div className='h-1/2'>
+          <img className='max-h-full w-auto' src={image} alt={title} />
+        </div>
+
+        <section className='p-4 flex flex-col justify-evenly items-center flex-wrap h-3/4 w-5/6'>
+          <h1 className='text-3xl w-full'>{title}</h1>
+          <p className='w-full'>{description}</p>
           <DotsPagination onboardingScreens={onboardingScreens} index={index} />
           <button
             type='button'
