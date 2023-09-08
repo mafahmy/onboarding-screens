@@ -20,9 +20,9 @@ const OnboardingScreen = ({
 }: Props) => {
   return (
     <>
-      <div className='flex flex-col justify-around items-center min-w-full'>
+      <div className='flex flex-col justify-evenly items-center min-w-full min-h-full '>
         <img className='' src={image} alt={title} />
-        <section className='p-4 flex flex-col justify-between items-center h-1/2'>
+        <section className='p-4 flex flex-col justify-evenly items-center h-3/4'>
           <h1 className='text-3xl'>{title}</h1>
           <p>{description}</p>
           <DotsPagination onboardingScreens={onboardingScreens} index={index} />

@@ -5,28 +5,26 @@ import { useNavigate } from 'react-router-dom';
 
 const OnboardingScreens = () => {
   const [index, setIndex] = useState(0);
-  const [mouseDown, setMouseDown] = useState(false);
+  const [touchDown, setTouchDown] = useState(false);
   const [startX, setStartX] = useState(0);
 
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    setMouseDown(true);
-    console.log('mah');
-    setStartX(e.clientX);
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setTouchDown(true);
+
+    setStartX(e.touches[0].clientX);
   };
-  const handleMouseUp = () => {
-    setMouseDown(false);
-    console.log('moh');
+  const handletouchEnd = () => {
+    setTouchDown(false);
   };
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (mouseDown) {
-      if (e.clientX < startX) {
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (touchDown) {
+      if (e.touches[0].clientX < startX) {
         if (onboardingScreens.length - 1 === index) {
           navigate('/home');
         }
         setIndex((prevIndex) => prevIndex + 1);
       }
-      setMouseDown(false);
-      console.log('meh');
+      setTouchDown(false);
     }
   };
 
@@ -44,13 +42,13 @@ const OnboardingScreens = () => {
       <div className='fixed h-screen w-screen bg-[#fbc1d7] z-10 top-0 opacity-50'></div>
       <div className='fixed top-0 right-0 left-0 z-20 flex justify-center'>
         <div
-          className='w-96 h-screen my-0 mx-auto sm:flex sm:justify-center sm:items-center overflow-x-hidden'
-          onMouseDown={handleMouseDown}
-          onMouseUp={handleMouseUp}
-          onMouseMove={handleMouseMove}
+          className='w-96 h-screen my-0 mx-auto flex justify-center items-center overflow-x-hidden'
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handletouchEnd}
+          onTouchMove={handleTouchMove}
         >
           <div
-            className='h-full sm:h-5/6 rounded-2xl'
+            className='sm:h-5/6 rounded-2xl h-5/6'
             style={onboardingScreens[index].backgroundStyle}
           >
             <div
