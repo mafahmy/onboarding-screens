@@ -42,13 +42,13 @@ const OnboardingScreens = () => {
       <div className='fixed h-screen w-screen bg-[#fbc1d7] z-10 top-0 opacity-50'></div>
       <div className='fixed top-0 right-0 left-0 z-20 flex justify-center'>
         <div
-          className='w-96 h-screen my-0 mx-auto flex justify-center items-center overflow-x-hidden'
+          className='w-96 h-screen my-0 mx-auto flex justify-center items-center py-12 overflow-x-hidden'
           onTouchStart={handleTouchStart}
           onTouchEnd={handletouchEnd}
           onTouchMove={handleTouchMove}
         >
           <div
-            className='rounded-2xl'
+            className='flex justify-center items-center rounded-2xl'
             style={onboardingScreens[index].backgroundStyle}
           >
             <div

@@ -15,7 +15,7 @@ export const onboardingScreens = [
   },
   {
     image: img2,
-    title: '2. This the first step of the app',
+    title: '2. This the second step of the app',
     description:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. In inventore, impedit perferendis nisi architecto repellendus.',
     backgroundStyle: {
@@ -25,7 +25,7 @@ export const onboardingScreens = [
   },
   {
     image: img3,
-    title: '3. This the first step of the app',
+    title: '3. This the third step of the app',
     description:
       'Lorem ipsum, dolor sit amet consectetur adipisicing elit. In inventore, impedit perferendis nisi architecto repellendus.',
     backgroundStyle: {

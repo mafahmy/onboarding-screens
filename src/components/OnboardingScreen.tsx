@@ -20,7 +20,7 @@ const OnboardingScreen = ({
 }: Props) => {
   return (
     <>
-      <div className='flex flex-col justify-evenly items-center min-w-full min-h-full '>
+      <div className='flex flex-col justify-evenly items-center min-w-full'>
         <div className='h-1/2'>
           <img className='max-h-full w-auto' src={image} alt={title} />
         </div>
