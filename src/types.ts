@@ -6,5 +6,5 @@ export interface OnboardingScreenType {
         backgroundColor: string;
     };
     buttonText: string;
-    buttonAction: () => void;
+
 }
