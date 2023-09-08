@@ -44,7 +44,7 @@ const OnboardingScreens = () => {
       <div className='fixed h-screen w-screen bg-[#fbc1d7] z-10 top-0 opacity-50'></div>
       <div className='fixed top-0 right-0 left-0 z-20 flex justify-center'>
         <div
-          className='overflow-hidden w-96 h-screen my-0 mx-auto sm:flex sm:justify-center sm:items-center'
+          className='w-96 h-screen my-0 mx-auto sm:flex sm:justify-center sm:items-center overflow-x-hidden'
           onMouseDown={handleMouseDown}
           onMouseUp={handleMouseUp}
           onMouseMove={handleMouseMove}
