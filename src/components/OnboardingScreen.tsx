@@ -9,7 +9,11 @@ interface Props {
   index: number;
   handleClick: () => void;
 }
-
+/**
+ * The OnboardingScreen component that displays a single onboarding screen.
+ * @param {Props} props - The props for the OnboardingScreen component.
+ * @returns {JSX.Element} The JSX element representing the OnboardingScreen component.
+ */
 const OnboardingScreen = ({
   onboardingScreens,
   image,

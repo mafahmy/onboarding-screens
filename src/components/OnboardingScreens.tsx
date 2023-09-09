@@ -3,19 +3,29 @@ import { onboardingScreens } from '../data/oboardingScreens';
 import OnboardingScreen from './OnboardingScreen';
 import { useNavigate } from 'react-router-dom';
 
+/**
+ * The OnboardingScreens component that displays a series of onboarding screens.
+ * @returns {JSX.Element} The JSX element representing the OnboardingScreens component.
+ */
 const OnboardingScreens = () => {
+  // State to keep track of the current onboarding screen index
   const [index, setIndex] = useState(0);
+  // State to keep track of touch events
   const [touchDown, setTouchDown] = useState(false);
   const [startX, setStartX] = useState(0);
+  // Hook to navigate between route
+  const navigate = useNavigate();
 
+  // Event handler for touch start events
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     setTouchDown(true);
-
     setStartX(e.touches[0].clientX);
   };
+  //Event handler for touch end events
   const handletouchEnd = () => {
     setTouchDown(false);
   };
+  // Event handler for touch move events
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     const threshold = 5;
     if (touchDown) {
@@ -33,9 +43,7 @@ const OnboardingScreens = () => {
       setTouchDown(false);
     }
   };
-
-  const navigate = useNavigate();
-
+  // Event handler for button click events
   const handleClick = () => {
     if (onboardingScreens.length - 1 === index) {
       navigate('/home');

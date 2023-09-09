@@ -2,7 +2,6 @@
   "name": "onboarding-screens",
   "private": true,
   "version": "0.0.0",
-  "homepage": "http://mafahmy.github.io/onboarding-screens",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
