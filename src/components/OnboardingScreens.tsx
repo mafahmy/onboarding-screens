@@ -17,12 +17,18 @@ const OnboardingScreens = () => {
     setTouchDown(false);
   };
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    const threshold = 5;
     if (touchDown) {
-      if (e.touches[0].clientX < startX) {
+      if (e.touches[0].clientX < startX - threshold) {
         if (onboardingScreens.length - 1 === index) {
           navigate('/home');
         }
         setIndex((prevIndex) => prevIndex + 1);
+      } else if (e.touches[0].clientX > startX + threshold) {
+        if (index === 0) {
+          return;
+        }
+        setIndex((prevIndex) => prevIndex - 1);
       }
       setTouchDown(false);
     }
@@ -42,7 +48,7 @@ const OnboardingScreens = () => {
       <div className='fixed h-screen w-screen bg-[#fbc1d7] z-10 top-0 opacity-50'></div>
       <div className='fixed top-0 right-0 left-0 z-20 flex justify-center'>
         <div
-          className='w-96 h-screen my-0 mx-auto flex justify-center items-center py-12 overflow-x-hidden'
+          className='w-96 h-screen my-0 mx-auto sm:flex sm:justify-center sm:items-center overflow-x-hidden'
           onTouchStart={handleTouchStart}
           onTouchEnd={handletouchEnd}
           onTouchMove={handleTouchMove}
