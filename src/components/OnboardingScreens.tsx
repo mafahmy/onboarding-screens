@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { onboardingScreens } from '../data/oboardingScreens';
 import OnboardingScreen from './OnboardingScreen';
-import { useNavigate } from 'react-router-dom';
+import { FirstTimeLoginContext } from '../contextAPI/context';
 
 /**
  * The OnboardingScreens component that displays a series of onboarding screens.
@@ -13,8 +13,11 @@ const OnboardingScreens = () => {
   // State to keep track of touch events
   const [touchDown, setTouchDown] = useState(false);
   const [startX, setStartX] = useState(0);
-  // Hook to navigate between route
-  const navigate = useNavigate();
+
+  const [, setFirstTimeLogin] = useContext(FirstTimeLoginContext) ?? [
+    true,
+    () => {},
+  ];
 
   // Event handler for touch start events
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -31,7 +34,7 @@ const OnboardingScreens = () => {
     if (touchDown) {
       if (e.touches[0].clientX < startX - threshold) {
         if (onboardingScreens.length - 1 === index) {
-          navigate('/home');
+          setFirstTimeLogin(false);
         }
         setIndex((prevIndex) => prevIndex + 1);
       } else if (e.touches[0].clientX > startX + threshold) {
@@ -46,7 +49,7 @@ const OnboardingScreens = () => {
   // Event handler for button click events
   const handleClick = () => {
     if (onboardingScreens.length - 1 === index) {
-      navigate('/home');
+      setFirstTimeLogin(false);
     }
     setIndex((previusIndex) => previusIndex + 1);
   };

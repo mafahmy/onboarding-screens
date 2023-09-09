@@ -6,11 +6,11 @@ export const FirstTimeLoginContext = createContext<
 >(null);
 
 // Create a provider for components to consume and subscribe to changes
-export const FirstTimeLoginProvider = (props) => {
-    const [firstTimeLogin, setFirstTimeLogin] = useState(true);
-    return (
-        <FirstTimeLoginContext.Provider value={[firstTimeLogin, setFirstTimeLogin]}>
-            {props.children}
-        </FirstTimeLoginContext.Provider>
-    )
-}
+export const FirstTimeLoginProvider = (props: React.PropsWithChildren) => {
+  const [firstTimeLogin, setFirstTimeLogin] = useState(true);
+  return (
+    <FirstTimeLoginContext.Provider value={[firstTimeLogin, setFirstTimeLogin]}>
+      {props.children}
+    </FirstTimeLoginContext.Provider>
+  );
+};

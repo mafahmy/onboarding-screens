@@ -1,14 +1,20 @@
 import OnboardingScreens from './components/OnboardingScreens';
 import { Routes, Route } from 'react-router-dom';
 import Home from './screens/Home';
-import { useState } from 'react';
+import { useContext } from 'react';
+import { FirstTimeLoginContext } from './contextAPI/context';
+
 
 /**
  * The main App component that defines the routes for the application.
  * @returns {JSX.Element} The JSX element representing the App component.
  */
 function App() {
-  const [firstTimeLogin, setFirstTimeLogin] = useState(true);
+  // Consume the FirstTimeLoginContext and destructure it if it's not null
+  const [firstTimeLogin] = useContext(FirstTimeLoginContext) ?? [
+    true,
+    () => {},
+  ];
 
   return (
     <>
