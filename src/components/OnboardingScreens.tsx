@@ -13,7 +13,7 @@ const OnboardingScreens = () => {
   // State to keep track of touch events
   const [touchDown, setTouchDown] = useState(false);
   const [startX, setStartX] = useState(0);
-
+  // Consume the FirstTimeLoginContext and destructure it if it's not null
   const [, setFirstTimeLogin] = useContext(FirstTimeLoginContext) ?? [
     true,
     () => {},
