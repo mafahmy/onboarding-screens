@@ -1,16 +1,21 @@
 import { createContext, useState } from "react";
 
 // Create a context for the firstTimeLogin state
-export const FirstTimeLoginContext = createContext<
+export const RenderingConditionContext = createContext<
   [boolean, React.Dispatch<React.SetStateAction<boolean>>] | null
 >(null);
 
 // Create a provider for components to consume and subscribe to changes
-export const FirstTimeLoginProvider = (props: React.PropsWithChildren) => {
-  const [firstTimeLogin, setFirstTimeLogin] = useState(true);
+export const RenderingConditionProvider = (props: React.PropsWithChildren) => {
+  const [renderComponent, setRenderComponent] = useState(true);
+
+  //Here add the logic for the rendering condition
+
   return (
-    <FirstTimeLoginContext.Provider value={[firstTimeLogin, setFirstTimeLogin]}>
+    <RenderingConditionContext.Provider
+      value={[renderComponent, setRenderComponent]}
+    >
       {props.children}
-    </FirstTimeLoginContext.Provider>
+    </RenderingConditionContext.Provider>
   );
 };
