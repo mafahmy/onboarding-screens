@@ -17,10 +17,11 @@ const OnboardingScreens = ({ screens }: Props) => {
   const [touchDown, setTouchDown] = useState(false);
   const [startX, setStartX] = useState(0);
   // Consume the FirstTimeLoginContext and destructure it if it's not null
-  const [firstTimeLogin, setFirstTimeLogin] = useContext(
-    RenderingConditionContext
-  ) ?? [true, () => {}];
 
+  const context = useContext(RenderingConditionContext);
+  const { renderComponent, setRenderComponent, setShowBackButton } = context;
+
+  //
   // Event handler for touch start events
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     setTouchDown(true);
@@ -36,7 +37,7 @@ const OnboardingScreens = ({ screens }: Props) => {
     if (touchDown) {
       if (e.touches[0].clientX < startX - threshold) {
         if (screens.length - 1 === index) {
-          setFirstTimeLogin(false);
+          setRenderComponent(false);
         }
         setIndex((prevIndex) => prevIndex + 1);
       } else if (e.touches[0].clientX > startX + threshold) {
@@ -51,9 +52,10 @@ const OnboardingScreens = ({ screens }: Props) => {
   // Event handler for button click events
   const handleClick = () => {
     if (screens.length - 1 === index) {
-      setFirstTimeLogin(false);
+      setRenderComponent(false);
     }
     setIndex((previusIndex) => previusIndex + 1);
+    setShowBackButton(false);
   };
   const handleBackClick = () => {
     if (index === 0) {
@@ -64,7 +66,7 @@ const OnboardingScreens = ({ screens }: Props) => {
 
   return (
     <>
-      {firstTimeLogin && (
+      {renderComponent && (
         <>
           <div className='fixed h-screen w-screen bg-[#fbc1d7] z-10 top-0 opacity-50'></div>
           <div className='fixed top-0 right-0 left-0 z-20 flex justify-center'>
